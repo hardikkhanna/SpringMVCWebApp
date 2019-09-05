@@ -7,18 +7,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("/reservation")
 @Controller
-public class ReservationController {
+public class StudentController {
 	@RequestMapping("/bookingForm")
 	public String bookingForm(Model model) {
-		Reservation res = new Reservation();
-		model.addAttribute("reservation", res);
+		Student res = new Student();
+		model.addAttribute("student", res);
 		return "reservation-page";
 	}
 
 	@RequestMapping("/submitForm")
-	public String submitForm(@ModelAttribute("reservation") Reservation res) {
-		
-		System.out.println("Hello: " + res.getFirstName() + " " + res.getLastName() +" Country Name: "+res.getCountryOptions());
+	public String submitForm(@ModelAttribute("student") Student res) {
+
+		System.out.println(
+				"Hello: " + res.getFirstName() + " " + res.getLastName() + " Country Name: " + res.getCountryOptions());
 		return "confirmation-form";
 	}
 }
