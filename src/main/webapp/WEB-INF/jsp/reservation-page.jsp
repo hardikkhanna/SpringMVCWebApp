@@ -4,11 +4,15 @@
 <html>
 <head>
 <title>Information Details</title>
+<link href="<c:url value="/resources/styles/bootstrap.min.css" />"
+	rel="stylesheet">
+<script src="<c:url value="/resources/javascript/example.js" />"></script>
 </head>
-<h3>Student Information Details</h3>
+
 <body>
-	<form:form action="submitForm" modelAttribute="student">
-		First name: <form:input path="firstName" />
+	<h3 class = "p-3">Student Information Details</h3>
+	<form:form action="submitForm" modelAttribute="student" class = "p-3">
+		First name: <form:input path="firstName" class = "text-warning"/>
 		<br>
 		<br>
 		Last name: <form:input path="lastName" />

@@ -13,7 +13,7 @@ public class Student {
 
 	public Student() {
 
-		countryOptions = new LinkedHashMap<>();
+		countryOptions = new LinkedHashMap<String,String>();
 		countryOptions.put("BR", "BRAZIL");
 		countryOptions.put("IN", "INDIA");
 		countryOptions.put("US", "UNITED STATES");

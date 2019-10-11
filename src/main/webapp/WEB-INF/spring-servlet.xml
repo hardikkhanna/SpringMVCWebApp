@@ -14,6 +14,7 @@
 	<context:component-scan base-package="com.javatpoint" />
 	<!--Provide support for conversion, formatting and validation -->
 	<mvc:annotation-driven/>
+	<mvc:resources mapping="/resources/**" location="/resources/"/>
 	<!-- Define Spring MVC view resolver -->
      <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/"></property>
