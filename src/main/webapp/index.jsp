@@ -1,10 +1,11 @@
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <title>Home Page</title>
 <link href="<c:url value="/resources/styles/bootstrap.min.css" />"
-	rel="stylesheet">
-<script src="<c:url value="/resources/javascript/example.js" />"></script>
+	rel="stylesheet">	
+<script src="<c:url value="/resources/javascript/bootstrap.min.js" />"></script>
 </head>
 <body>
 	<h1 class="text-uppercase font-weight-bold">Home Page</h1>
