@@ -56,6 +56,10 @@
 		<!-- <property name="jdbcTemplate" ref="jdbcTemplate" /> -->
 	</bean>
 
+	<bean id="customerService" class="hibernate.demo.services.CustomerServiceImpl">
+		<!-- <property name="jdbcTemplate" ref="jdbcTemplate" /> -->
+	</bean>
+
 	<!-- Step 3: Setup Hibernate transaction manager -->
 	<bean id="myTransactionManager"
 		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
