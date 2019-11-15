@@ -3,24 +3,14 @@
 <html>
 <head>
 <title>Home Page</title>
-<link href="<c:url value="/resources/styles/bootstrap.min.css" />"
-	rel="stylesheet">	
-<script src="<c:url value="/resources/javascript/bootstrap.min.js" />"></script>
+<link type="text/css" rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/styles/bootstrap.min.css" />
 </head>
 <body>
 	<h1 class="text-uppercase font-weight-bold">Home Page</h1>
 	<a href="reservation/bookingForm">Click here for reservation.</a>
+	<br>
+	<br>
+	<a href="customer/list">Click here For Form Data</a>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

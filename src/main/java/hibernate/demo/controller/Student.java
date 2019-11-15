@@ -1,4 +1,4 @@
-package com.javatpoint;
+package hibernate.demo.controller;
 
 import java.util.LinkedHashMap;
 
