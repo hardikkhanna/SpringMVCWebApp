@@ -19,21 +19,27 @@
 		</div>
 
 		<div class="row">
-			<div class="content">
-				<table>
+			<div class="content table-responsive-md">
+				<table class="table-md table-dark table-hover table-bordered">
+					<caption>List of Customers</caption>
 					<tr>
-						<th>No.</th>
-						<th>First Name</th>
-						<th>Last Name</th>
-						<th>Email</th>
-
+						<th scope="col">First Name</th>
+						<th scope="col">Last Name</th>
+						<th scope="col">Email</th>
+						<th scope="col">Action</th>
 					</tr>
 					<c:forEach var="tempCustomer" items="${customers}">
+					
+						<!-- Contruct an Update link with Customer Id -->
+						<c:url var="updateLink" value="/customer/showFormForUpdate">
+							<c:param name="customerId" value="${tempCustomer.id }"></c:param>
+						</c:url>	
 						<tr>
-							<td><input type="text" value="${tempCustomer.id}" /></td>
-							<td><input type="text" value="${tempCustomer.firstName}" /></td>
-							<td><input type="text" value="${tempCustomer.lastName}" /></td>
-							<td><input type="text" value="${tempCustomer.email}" /></td>
+							<td scope="row"><input type="text" value="${tempCustomer.firstName}" /></td>
+							<td scope="row"><input type="text" value="${tempCustomer.lastName}" /></td>
+							<td scope="row"><input type="text" value="${tempCustomer.email}" /></td>
+							<!-- Display the Update Link -->
+							<td scope="row"><a href="${updateLink }">Update</a></td>
 						</tr>
 					</c:forEach>
 				</table>
