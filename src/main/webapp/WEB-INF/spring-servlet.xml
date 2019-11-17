@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -12,7 +14,8 @@
 		http://www.springframework.org/schema/tx 
 		http://www.springframework.org/schema/tx/spring-tx.xsd">
 	<!-- Provide support for component scanning -->
-	<context:component-scan base-package="hibernate.demo.controller" />
+	<context:component-scan
+		base-package="hibernate.demo.controller" />
 	<!--Provide support for conversion, formatting and validation -->
 	<mvc:annotation-driven />
 
@@ -25,11 +28,12 @@
 
 
 	<!-- Step 1: Define Database DataSource / connection pool -->
-	<bean id="myDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+	<bean id="myDataSource"
+		class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
-		<property name="driverClass" value="com.mysql.cj.jdbc.Driver" />
+		<property name="driverClass" value="com.mysql.jdbc.Driver" />
 		<property name="jdbcUrl"
-			value="jdbc:mysql://localhost:3306/web_customer_tracker?useSSL=false" />
+			value="jdbc:mysql://localhost:3306/web_customer_tracker" />
 		<property name="user" value="springstudent" />
 		<property name="password" value="springstudent" />
 
@@ -44,7 +48,8 @@
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="myDataSource" />
-		<property name="packagesToScan" value="com.luv2code.springdemo.entity" />
+		<property name="packagesToScan"
+			value="com.luv2code.springdemo.entity" />
 		<property name="configLocation">
 			<value>classpath:hibernate.cfg.xml</value>
 		</property>
@@ -56,7 +61,8 @@
 		<!-- <property name="jdbcTemplate" ref="jdbcTemplate" /> -->
 	</bean>
 
-	<bean id="customerService" class="hibernate.demo.services.CustomerServiceImpl">
+	<bean id="customerService"
+		class="hibernate.demo.services.CustomerServiceImpl">
 		<!-- <property name="jdbcTemplate" ref="jdbcTemplate" /> -->
 	</bean>
 
@@ -67,7 +73,8 @@
 	</bean>
 
 	<!-- Step 4: Enable configuration of transactional behavior based on annotations -->
-	<tx:annotation-driven transaction-manager="myTransactionManager" />
+	<tx:annotation-driven
+		transaction-manager="myTransactionManager" />
 	<!-- Load custom message resources -->
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
@@ -75,5 +82,6 @@
 	</bean>
 
 	<!-- Add support for reading web resources: css, images, js, etc ... -->
-	<mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
+	<mvc:resources location="/resources/"
+		mapping="/resources/**"></mvc:resources>
 </beans>
