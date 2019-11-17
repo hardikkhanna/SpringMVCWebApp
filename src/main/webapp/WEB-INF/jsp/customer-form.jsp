@@ -13,22 +13,31 @@
 			<h2>CRM - Customer Relational Manager</h2>
 		</div>
 		<div class="row">
-			<div class="content">
+			<div class="content table-responsive form-group">
 				<form:form action="saveCustomer" modelAttribute="customer"
 					method="POST">
-					<table>
+
+					<!-- need to assosciate this data with customer id on form Submit it will set customer Id for Update Operations
+						Very Very important to add this 
+					 -->
+					<form:hidden path="id" />
+					<table
+						class="table table-striped table-dark table-hover table-bordered">
 						<tbody>
 							<tr>
-								<td><label>First Name : </label></td>
-								<td><form:input type="text" path="firstName" /></td>
+								<td scope="row"><label>First Name : </label></td>
+								<td scope="row"><form:input type="text" path="firstName"
+										class="form-control" /></td>
 							</tr>
 							<tr>
-								<td><label>Last Name : </label></td>
-								<td><form:input type="text" path="lastName" /></td>
+								<td scope="row"><label>Last Name : </label></td>
+								<td scope="row"><form:input type="text" path="lastName"
+										class="form-control" /></td>
 							</tr>
 							<tr>
-								<td><label>Email : </label></td>
-								<td><form:input type="text" path="email" /></td>
+								<td scope="row"><label>Email : </label></td>
+								<td scope="row"><form:input type="text" path="email"
+										class="form-control" /></td>
 							</tr>
 							<tr>
 								<!-- There are two ways to reference the back button both are implemented below -->
@@ -39,13 +48,14 @@
 								onclick="window.location.href='list'; return false" /></td> -->
 
 								<!-- 2 method -->
-								<td><input type="submit" class="btn btn-info" value="Back"
+								<td scope="row"><input type="submit" class="btn btn-info"
+									value="Back"
 									onclick="window.location.href='${pageContext.request.contextPath}/customer/list'; return false" /></td>
 
 
 								<!-- Save Customer Button -->
-								<td><input type="submit" class="btn btn-success"
-									value="Save" /></td>
+								<td scope="row"><input type="submit"
+									class="btn btn-success" value="Save" /></td>
 							</tr>
 						</tbody>
 					</table>

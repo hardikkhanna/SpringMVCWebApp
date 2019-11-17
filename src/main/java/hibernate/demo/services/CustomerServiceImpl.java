@@ -28,6 +28,12 @@ public class CustomerServiceImpl implements CustomerService {
 		// TODO Auto-generated method stub
 		customerDAO.saveCustomer(theCustomer);
 	}
+
+	@Transactional
+	public Customer getCustomers(int theId) {
+		// TODO Auto-generated method stub
+		return customerDAO.getCustomers(theId);
+	}
 }
 
 

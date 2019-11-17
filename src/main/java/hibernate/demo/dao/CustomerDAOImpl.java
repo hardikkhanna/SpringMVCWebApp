@@ -45,9 +45,25 @@ public class CustomerDAOImpl implements CustomerDAO {
 		Transaction tx = currentSession.beginTransaction();		//create a update query
 		
 		currentSession.saveOrUpdate(theCustomer);
-		// save the customer finally
+		// save/update the customer finally
 		
 		tx.commit();
+		
+	}
+
+
+	public Customer getCustomers(int theId) {
+		
+		// get Current Hibernate Session
+		Session currentSession = sessionFactory.getCurrentSession();
+		Transaction tx = currentSession.beginTransaction();
+		
+		// now retreive/read from Database using the Primary Key
+		Customer theCustomer = currentSession.get(Customer.class, theId);
+		
+		
+		tx.commit();
+		return theCustomer;
 		
 	}
 
