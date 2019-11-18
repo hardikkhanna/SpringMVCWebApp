@@ -44,23 +44,31 @@ public class CustomerController {
 
 		return "customer-form";
 	}
-	
+
 	@PostMapping("/saveCustomer")
 	public String saveCustomer(@ModelAttribute("customer") Customer theCustomer) {
-		
+
 		customerService.saveCustomer(theCustomer);
 		return "redirect:/customer/list";
 	}
-	
+
 	@GetMapping("/showFormForUpdate")
 	public String showFormForUpdate(@RequestParam("customerId") int theId, Model theModel) {
-		
+
 		Customer theCustomer = customerService.getCustomers(theId);
-		
-		theModel.addAttribute("customer",theCustomer);
-		
+
+		theModel.addAttribute("customer", theCustomer);
+
 		return "customer-form";
-		
+
+	}
+
+	@GetMapping("/delete")
+	public String deleteCustomer(@RequestParam("customerId") int theId) {
+
+		customerService.deleteCustomer(theId);
+
+		return "redirect:/customer/list";
 	}
 
 }

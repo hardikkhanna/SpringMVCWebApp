@@ -9,20 +9,18 @@ import org.springframework.transaction.annotation.Transactional;
 import hibernate.demo.dao.CustomerDAO;
 import hibernate.demo.entity.Customer;
 
-
-
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
 	// need to inject customer dao
 	@Autowired
 	private CustomerDAO customerDAO;
-	
+
 	@Transactional
 	public List<Customer> getCustomers() {
 		return customerDAO.getCustomers();
 	}
-	
+
 	@Transactional
 	public void saveCustomer(Customer theCustomer) {
 		// TODO Auto-generated method stub
@@ -34,9 +32,10 @@ public class CustomerServiceImpl implements CustomerService {
 		// TODO Auto-generated method stub
 		return customerDAO.getCustomers(theId);
 	}
+
+	@Transactional
+	public void deleteCustomer(int theId) {
+		// TODO Auto-generated method stub
+		customerDAO.deleteCustomer(theId);
+	}
 }
-
-
-
-
-

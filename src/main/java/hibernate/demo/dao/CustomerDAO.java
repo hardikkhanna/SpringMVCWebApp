@@ -4,7 +4,6 @@ import java.util.List;
 
 import hibernate.demo.entity.Customer;
 
-
 public interface CustomerDAO {
 
 	public List<Customer> getCustomers();
@@ -13,5 +12,6 @@ public interface CustomerDAO {
 
 	public Customer getCustomers(int theId);
 
-	
+	public void deleteCustomer(int theId);
+
 }
