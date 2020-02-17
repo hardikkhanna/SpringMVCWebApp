@@ -8,17 +8,28 @@ import com.springdemo.aop.dao.MembershipDAO;
 public class MainClass {
 
 	public static void main(String[] args) {
-		
+
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(DemoConfig.class);
+
+		AccountDAO theaccount = context.getBean("accountDAO", AccountDAO.class);
+
+		MembershipDAO theMember = context.getBean("membershipDAO", MembershipDAO.class);
+
+		theaccount.addAccount(new Account(), true);
 		
-		AccountDAO theaccount = context.getBean("accountDAO",AccountDAO.class);
+		theaccount.doWork();
 		
-		MembershipDAO theMember = context.getBean("membershipDAO",MembershipDAO.class);
+		theaccount.setServiceCode("Silver");
 		
-		theaccount.addAccount();
+		theaccount.setAccountName("Sample");
 		
+		String name = theaccount.getAccountName();
+		String serviceName = theaccount.getServiceCode();
+
 		theMember.addAccount();
 		
+		theMember.goToSleep();
+
 		context.close();
 	}
 
