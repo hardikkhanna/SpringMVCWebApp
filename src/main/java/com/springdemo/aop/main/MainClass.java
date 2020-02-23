@@ -1,13 +1,17 @@
 package com.springdemo.aop.main;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.springdemo.aop.dao.AccountDAO;
 import com.springdemo.aop.dao.MembershipDAO;
+import com.springdemo.aop.service.TrafficFortuneService;
 
 public class MainClass {
+
+	private static Logger log = Logger.getLogger(MainClass.class.getName());
 
 	public static void main(String[] args) {
 
@@ -15,22 +19,36 @@ public class MainClass {
 
 		AccountDAO theaccount = context.getBean("accountDAO", AccountDAO.class);
 
+		TrafficFortuneService theFortuneService = context.getBean("trafficFortuneService", TrafficFortuneService.class);
+
+		log.info("\n Main Program : AroundDemoApp");
+
+		log.info("Calling getFortune");
+		
+		boolean trip = true;
+
+		String data = theFortuneService.getFortune(trip);
+
+		log.info("\n My Fortune is : " + data);
+
+		log.info("Finished");
+
 		List<Account> theAccounts = null;
 		try {
 			boolean tripwire = true;
 
 			theAccounts = theaccount.findAccounts(tripwire);
 		} catch (Exception e) {
-			System.out.println("\n Exception caught in main program : " + e);
+			log.info("\n Exception caught in main program : " + e);
 		}
 
 		theAccounts = theaccount.findAccounts(false);
 
-		System.out.println("\n\n Main Program : AfterReturning");
+		log.info("\n\n Main Program : AfterReturning");
 
-		System.out.println("-------------");
+		log.info("-------------");
 
-		System.out.println(theAccounts);
+		log.info(theAccounts.toString());
 
 		MembershipDAO theMember = context.getBean("membershipDAO", MembershipDAO.class);
 
