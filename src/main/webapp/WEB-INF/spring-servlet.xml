@@ -14,14 +14,20 @@
 		http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/tx 
 		http://www.springframework.org/schema/tx/spring-tx.xsd
-		 http://www.springframework.org/schema/aop
-		http://www.springframework.org/schema/aop/spring-aop-3.0.xsd ">
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop.xsd ">
+		
+	<!-- Add AspectJ autoProxySupport for AOP -->
+	<aop:aspectj-autoproxy />
+		
 	<!-- Provide support for component scanning -->
 	<context:component-scan
-		base-package="hibernate.demo.controller" />
+		base-package="hibernate.demo.controller, com.springdemo.aop.aspect" />
+		
+	
 	<!--Provide support for conversion, formatting and validation -->
 	<mvc:annotation-driven />
-	<aop:aspectj-autoproxy />
+	
 	<!-- Define Spring MVC view resolver -->
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
