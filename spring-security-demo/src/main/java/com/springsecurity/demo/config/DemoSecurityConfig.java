@@ -18,10 +18,9 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 	private static final String ENCODED_PASSWORD = "$2y$12$1KBBVvvUu2x.vis5GhFNluWK.vhlbcD4IZhDsm.nstV1dDuCbCqeO";
 
 	private static final String LOGIN_FORM_PAGE = "/showLoginPage";
-	
+
 	private static final String AUTHENTICATE_USER = "/authenticateTheUser";
-	
-	
+
 	// To get the Security from Spring Security
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -39,9 +38,9 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.authorizeRequests().anyRequest().authenticated().and().formLogin().loginPage(LOGIN_FORM_PAGE)
-				.loginProcessingUrl(AUTHENTICATE_USER).permitAll();
+				.loginProcessingUrl(AUTHENTICATE_USER).permitAll().and().logout().permitAll();
 	}
-	
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
