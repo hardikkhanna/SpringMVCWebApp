@@ -1,4 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <html>
@@ -29,10 +31,24 @@
 	<form:form action="${pageContext.request.contextPath}/logout"
 		method="POST">
 
-		<div style="margin-top: 10px" class="form-group">
-			<div class="col-sm-6 controls">
-				<button type="submit" class="btn btn-success">Logout</button>
+		<div class=".container-fluid">
+
+			<div class="row">
+				<div class="col-sm-6">
+					<span>User : </span><span><sec:authentication
+							property="principal.username" /></span> <span>Roles : </span><span><sec:authentication
+							property="principal.authorities" /></span>
+				</div>
+			</div> 
+
+			<div class="row" style="margin-top: 10px" class="form-group">
+				<div class="col-sm-6 controls">
+					<button type="submit" class="btn btn-success">Logout</button>
+				</div>
 			</div>
+
+
+
 		</div>
 
 	</form:form>

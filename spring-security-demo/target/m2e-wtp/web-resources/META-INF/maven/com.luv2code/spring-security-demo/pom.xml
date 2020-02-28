@@ -13,6 +13,7 @@
 	<properties>
 		<springframework.version>5.2.0.RELEASE</springframework.version>
 		<springsecurity.version>5.2.0.RELEASE</springsecurity.version>
+		<springsecurity-tag.version>5.2.0.RELEASE</springsecurity-tag.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
@@ -34,6 +35,14 @@
 			<artifactId>spring-security-web</artifactId>
 			<version>${springsecurity.version}</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${springsecurity-tag.version}</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>org.springframework.security</groupId>

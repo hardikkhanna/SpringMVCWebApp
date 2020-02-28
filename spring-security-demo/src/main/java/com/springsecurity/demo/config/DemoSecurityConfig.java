@@ -21,16 +21,22 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	private static final String AUTHENTICATE_USER = "/authenticateTheUser";
 
+	private static final String EMPLOYEE_ROLE = "EMPLOYEE";
+	
+	private static final String ADMIN_ROLE = "ADMIN";
+	
+	private static final String MANAGER_ROLE = "MANAGER";
+	
 	// To get the Security from Spring Security
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
 		auth.inMemoryAuthentication().passwordEncoder(passwordEncoder()).withUser("Hardik").password(ENCODED_PASSWORD)
-				.roles("EMPLOYEE");
+				.roles(EMPLOYEE_ROLE);
 		auth.inMemoryAuthentication().passwordEncoder(passwordEncoder()).withUser("Oshin").password(ENCODED_PASSWORD)
-				.roles("ADMIN");
+				.roles(EMPLOYEE_ROLE , MANAGER_ROLE);
 		auth.inMemoryAuthentication().passwordEncoder(passwordEncoder()).withUser("Mohit").password(ENCODED_PASSWORD)
-				.roles("MANAGER");
+				.roles(EMPLOYEE_ROLE , ADMIN_ROLE);
 
 	}
 
