@@ -22,11 +22,13 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 	private static final String AUTHENTICATE_USER = "/authenticateTheUser";
 
 	private static final String EMPLOYEE_ROLE = "EMPLOYEE";
-	
+
 	private static final String ADMIN_ROLE = "ADMIN";
-	
+
 	private static final String MANAGER_ROLE = "MANAGER";
-	
+
+	private static final String ACCESS_DENIED = "/accessdenied";
+
 	// To get the Security from Spring Security
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -34,17 +36,20 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.inMemoryAuthentication().passwordEncoder(passwordEncoder()).withUser("Hardik").password(ENCODED_PASSWORD)
 				.roles(EMPLOYEE_ROLE);
 		auth.inMemoryAuthentication().passwordEncoder(passwordEncoder()).withUser("Oshin").password(ENCODED_PASSWORD)
-				.roles(EMPLOYEE_ROLE , MANAGER_ROLE);
+				.roles(EMPLOYEE_ROLE, MANAGER_ROLE);
 		auth.inMemoryAuthentication().passwordEncoder(passwordEncoder()).withUser("Mohit").password(ENCODED_PASSWORD)
-				.roles(EMPLOYEE_ROLE , ADMIN_ROLE);
+				.roles(EMPLOYEE_ROLE, ADMIN_ROLE);
 
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		http.authorizeRequests().anyRequest().authenticated().and().formLogin().loginPage(LOGIN_FORM_PAGE)
-				.loginProcessingUrl(AUTHENTICATE_USER).permitAll().and().logout().permitAll();
+		http.authorizeRequests().antMatchers("/").hasRole(EMPLOYEE_ROLE).antMatchers("/leaders/**")
+				.hasRole(MANAGER_ROLE).antMatchers("/systems/**").hasRole(ADMIN_ROLE).and().formLogin()
+				.loginPage(LOGIN_FORM_PAGE).loginProcessingUrl(AUTHENTICATE_USER).permitAll().and().logout().permitAll()
+				.and().exceptionHandling().accessDeniedPage(ACCESS_DENIED);
+
 	}
 
 	@Bean

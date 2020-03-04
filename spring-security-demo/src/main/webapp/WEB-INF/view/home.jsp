@@ -24,35 +24,54 @@
 
 </head>
 <body>
-	<h2>Company Home Page</h2>
-	<hr>
-	Welcome to the Company Home Page!
+	<div class="container">
+		<h2>Company Home Page</h2>
+		<hr>
+		Welcome to the Company Home Page!
+		<form:form action="${pageContext.request.contextPath}/logout"
+			method="POST">
 
-	<form:form action="${pageContext.request.contextPath}/logout"
-		method="POST">
+			<div class=".container-fluid">
 
-		<div class=".container-fluid">
-
-			<div class="row">
-				<div class="col-sm-6">
-					<span>User : </span><span><sec:authentication
-							property="principal.username" /></span> <span>Roles : </span><span><sec:authentication
-							property="principal.authorities" /></span>
+				<div class="row">
+					<div class="col-sm-6">
+						<span>User : </span><span><sec:authentication
+								property="principal.username" /></span> <span>Roles : </span><span><sec:authentication
+								property="principal.authorities" /></span>
+					</div>
 				</div>
-			</div> 
-
-			<div class="row" style="margin-top: 10px" class="form-group">
-				<div class="col-sm-6 controls">
-					<button type="submit" class="btn btn-success">Logout</button>
+				<hr>
+				<div class="row">
+					<div class="col-sm-6">
+						<span><p>
+								<a href="${pageContext.request.contextPath}/leaders">LeaderShip
+									Meeting</a> Only For Manager Peeps
+							</p></span>
+					</div>
 				</div>
+				
+				<!-- Only for Admins -->
+				<div class="row">
+					<div class="col-sm-6">
+						<span><p>
+								<a href="${pageContext.request.contextPath}/systems">IT Systems
+									Meeting</a> Only For Admin Peeps
+							</p></span>
+					</div>
+				</div>
+
+				<div class="row" style="margin-top: 10px" class="form-group">
+					<div class="col-sm-6 controls">
+						<button type="submit" class="btn btn-success">Logout</button>
+					</div>
+				</div>
+
+
+
 			</div>
 
-
-
-		</div>
-
-	</form:form>
-
+		</form:form>
+	</div>
 
 </body>
 </html>
