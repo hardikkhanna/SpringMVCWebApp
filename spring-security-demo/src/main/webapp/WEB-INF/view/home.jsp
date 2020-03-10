@@ -41,24 +41,29 @@
 					</div>
 				</div>
 				<hr>
-				<div class="row">
-					<div class="col-sm-6">
-						<span><p>
-								<a href="${pageContext.request.contextPath}/leaders">LeaderShip
-									Meeting</a> Only For Manager Peeps
-							</p></span>
+				<sec:authorize access="hasRole('MANAGER')">
+					<div class="row">
+						<div class="col-sm-6">
+							<span><p>
+									<a href="${pageContext.request.contextPath}/leaders">LeaderShip
+										Meeting</a> Only For Manager Peeps
+								</p></span>
+						</div>
 					</div>
-				</div>
-				
+				</sec:authorize>
+
+
 				<!-- Only for Admins -->
-				<div class="row">
-					<div class="col-sm-6">
-						<span><p>
-								<a href="${pageContext.request.contextPath}/systems">IT Systems
-									Meeting</a> Only For Admin Peeps
-							</p></span>
+				<sec:authorize access="hasRole('ADMIN')">
+					<div class="row">
+						<div class="col-sm-6">
+							<span><p>
+									<a href="${pageContext.request.contextPath}/systems">IT
+										Systems Meeting</a> Only For Admin Peeps
+								</p></span>
+						</div>
 					</div>
-				</div>
+				</sec:authorize>
 
 				<div class="row" style="margin-top: 10px" class="form-group">
 					<div class="col-sm-6 controls">

@@ -1,5 +1,8 @@
 package com.springsecurity.demo.config;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -29,17 +32,26 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	private static final String ACCESS_DENIED = "/accessdenied";
 
+	@Autowired
+	private DataSource securityDataSource;
+
 	// To get the Security from Spring Security
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-		auth.inMemoryAuthentication().passwordEncoder(passwordEncoder()).withUser("Hardik").password(ENCODED_PASSWORD)
-				.roles(EMPLOYEE_ROLE);
-		auth.inMemoryAuthentication().passwordEncoder(passwordEncoder()).withUser("Oshin").password(ENCODED_PASSWORD)
-				.roles(EMPLOYEE_ROLE, MANAGER_ROLE);
-		auth.inMemoryAuthentication().passwordEncoder(passwordEncoder()).withUser("Mohit").password(ENCODED_PASSWORD)
-				.roles(EMPLOYEE_ROLE, ADMIN_ROLE);
+		// Gettinlg users from DataBase
+		auth.jdbcAuthentication().dataSource(securityDataSource);
 
+		// Hardcoding Users
+
+		/*
+		 * auth.inMemoryAuthentication().passwordEncoder(passwordEncoder()).withUser(
+		 * "Hardik").password(ENCODED_PASSWORD) .roles(EMPLOYEE_ROLE);
+		 * auth.inMemoryAuthentication().passwordEncoder(passwordEncoder()).withUser(
+		 * "Oshin").password(ENCODED_PASSWORD) .roles(EMPLOYEE_ROLE, MANAGER_ROLE);
+		 * auth.inMemoryAuthentication().passwordEncoder(passwordEncoder()).withUser(
+		 * "Mohit").password(ENCODED_PASSWORD) .roles(EMPLOYEE_ROLE, ADMIN_ROLE);
+		 */
 	}
 
 	@Override
