@@ -3,7 +3,7 @@
 
 <!doctype html>
 <html lang="en">
-  
+
 <head>
 
 <title>Login Page</title>
@@ -25,7 +25,7 @@
 
 <body>
 
-	<div>
+	<div class="container">
 
 		<div id="loginbox" style="margin-top: 50px;"
 			class="mainbox col-md-3 col-md-offset-2 col-sm-6 col-sm-offset-2">
@@ -91,8 +91,15 @@
 				</div>
 
 			</div>
-
+			<hr>
+			<div class="panel">
+				<a
+					href="${pageContext.request.contextPath}/register/showRegistrationForm"
+					class="btn btn-primary" role="button" aria-pressed="true">
+					Register New User </a>
+			</div>
 		</div>
+
 
 	</div>
 

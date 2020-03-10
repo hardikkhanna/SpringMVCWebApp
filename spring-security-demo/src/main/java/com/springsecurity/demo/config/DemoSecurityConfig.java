@@ -12,6 +12,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
+import org.springframework.security.provisioning.UserDetailsManager;
 
 @Configuration
 @EnableWebSecurity
@@ -64,6 +66,17 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	}
 
+	@Bean
+	public UserDetailsManager userDetailsManager() {
+		
+		JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager();
+		
+		jdbcUserDetailsManager.setDataSource(securityDataSource);
+		
+		return jdbcUserDetailsManager;
+		
+	}
+	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
