@@ -1,6 +1,8 @@
 {
-	"id": 14,
-	"firstName": "Mario",
-	"lastName": "Rossi",
-	"active": true
+   "Coverage":"Yes",
+   "County":"Hartford",
+   "Age":24.0,
+   "Pregnant":"No",
+   "Income":24000.0,
+   "IncomeType":"Anually"
 }

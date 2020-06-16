@@ -11,7 +11,13 @@ public class Driver {
 		try {
 			// create Object mapper
 			ObjectMapper mapper = new ObjectMapper();
-
+			
+			String input = "{\"Coverage\":\"Yes\",\"County\":\"Hartford\",\"Age\":24.0,\"Pregnant\":\"No\",\"Income\":24000.0,\"IncomeType\":\"Anually\"}";
+			
+			PrescreenModel model = mapper.readValue(new File("data/sample-lite.json"), PrescreenModel.class);
+			
+			System.out.println(model.getAge());
+			
 			// read jason file and map to java pojo
 			Student theStudent = mapper.readValue(new File("data/sample-full.json"), Student.class);
 
