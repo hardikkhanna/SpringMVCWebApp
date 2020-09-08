@@ -1,6 +1,5 @@
 # SpringMVCWebApp
-Learned Spring MVC 
-Things Learned :
+Topics Covered : 
 1) Learned the basic flow for Spring MVC
 2) Creating Controllers and view pages
 3) Spring MVC Request Parameters and Request Mapping
